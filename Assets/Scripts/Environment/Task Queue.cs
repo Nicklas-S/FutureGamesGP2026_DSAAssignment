@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-
+[Serializable]
 public class TaskQueue<T> {
-    public List<T> Taskqueue;
+    public List<T> Taskqueue = new();
 
     public void Enqueue(T InNewElement) {
         Taskqueue.Add(InNewElement);
@@ -15,7 +16,7 @@ public class TaskQueue<T> {
         return Taskqueue[0];
     }
 
-    public T DeQueue(T inElement) {
+    public T DeQueue() {
         if(Taskqueue.Count == 0) throw new Exception("Task queue is empty, what are you trying to remove?");
 
         T firstInQueue = Taskqueue[0];
