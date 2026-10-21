@@ -13,15 +13,21 @@ namespace Player {
         private InputActionReference moveAction = null;
         [SerializeField]
         private InputActionReference interactAction = null;
+        [SerializeField]
+        private InputActionReference rotationAction = null;
 
         [Header("Movement")]
         [SerializeField]
         private float movementSpeed = 10f;
-        [Header("Interaction")]
+       [Header("Interaction")]
         [SerializeField]
         private float interactionRange = 5f;
+        [Header("Rotation")]
+        [SerializeField]
+        private float rotationSpeed = 90f;
 
         private Vector2 movementInput = Vector2.zero;
+        private float rotationInput = 0f;
 
         private void Awake() {
             if(!animator) {
@@ -36,6 +42,8 @@ namespace Player {
 
             moveAction.action.performed += OnMove;
             moveAction.action.canceled += OnMove;
+            rotationAction.action.performed += OnRotate;
+            rotationAction.action.canceled += OnRotate;
 
             interactAction.action.performed += OnInteract;
         }
@@ -43,6 +51,15 @@ namespace Player {
         private void OnMove(InputAction.CallbackContext context) {
             movementInput = context.ReadValue<Vector2>();
             animator.SetBool("bIsMoving", movementInput != Vector2.zero);
+        }
+
+        private void OnRotate(InputAction.CallbackContext context) {
+            //rotationInput = context.ReadValue<Vector2>().x == 0 ? 0 : Mathf.Sign(context.ReadValue<Vector2>().x); (Does the same as lines 58 - 61)
+            if(context.ReadValue<Vector2>().x == 0)
+                rotationInput = 0;
+            else
+                rotationInput = Mathf.Sign(context.ReadValue<Vector2>().x);
+
         }
 
         private void OnInteract(InputAction.CallbackContext context) {
@@ -54,8 +71,9 @@ namespace Player {
         }
 
         private void Update() {
-            transform.position += (new Vector3(movementInput.x, 0f, movementInput.y)) * (movementSpeed * Time.deltaTime);
-        }
+            transform.position += (transform.forward * movementInput.y + transform.right * movementInput.x) * (movementSpeed * Time.deltaTime);
+            transform.eulerAngles += (new Vector3(0, rotationSpeed * Time.deltaTime * rotationInput, 0));
+            }
 
 
         private void OnEnable() {
