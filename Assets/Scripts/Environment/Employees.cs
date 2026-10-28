@@ -9,6 +9,9 @@ public class Employees
     public string lastEntranceInEngineRoom;
     public string lastExitFromEngineRoom;
 
+    public DateTime Entered;
+    public DateTime Exiting;
+
 }
 [Serializable]
 public class EmployeeArray {
