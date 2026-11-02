@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CustomTaskData
   m_EditorClassIdentifier: Assembly-CSharp::CustomTask
   employeeData: {fileID: 11400000, guid: 7db4982b2d8c900408dee8233ebd7efa, type: 2}
-  jsonFile: {fileID: 4900000, guid: 369b9c9c15e3ece4f8bdbaddc332e93c, type: 3}
+  jsonFile: {fileID: 4900000, guid: 481247438baa7df4a90bb47290a0647d, type: 3}

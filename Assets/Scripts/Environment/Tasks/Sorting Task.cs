@@ -59,7 +59,7 @@ public class SortingTask : Task {
         int k = leftSide;
 
         while(i < sizeLeftSide && j < sizeRightSide) {
-            if(tempLeft[i].Entered <= tempRight[j].Entered) {
+            if(tempLeft[i].Entered >= tempRight[j].Entered) {
                 arrayToMerge[k] = tempLeft[i];
                 i++;
 
