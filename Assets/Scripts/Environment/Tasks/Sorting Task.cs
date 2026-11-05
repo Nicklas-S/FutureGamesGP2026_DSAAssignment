@@ -7,7 +7,7 @@ using UnityEngine;
 public class SortingTask : Task {
     [SerializeField] EmployeeData employeeData;
     [SerializeField] TextAsset jsonFile;
-    public Employees[] sortedEmployees;
+    public static Employees[] sortedEmployees;
     public override void Execute() {
         sortedEmployees = JsonUtility.FromJson<EmployeeArray>(jsonFile.text)?.employees;
         foreach(Employees employee in sortedEmployees) {
@@ -59,7 +59,7 @@ public class SortingTask : Task {
         int k = leftSide;
 
         while(i < sizeLeftSide && j < sizeRightSide) {
-            if(tempLeft[i].Entered >= tempRight[j].Entered) {
+            if(tempLeft[i].Entered <= tempRight[j].Entered) {
                 arrayToMerge[k] = tempLeft[i];
                 i++;
 
