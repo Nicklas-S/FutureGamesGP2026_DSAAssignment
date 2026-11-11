@@ -11,7 +11,6 @@ namespace Environment {
         [SerializeField] private TaskQueue<Task> tasks = null; // Put your stack/queue here :)
 
         public void OnInteract() {
-          
             tasks.DeQueue().Execute();
         }
     }

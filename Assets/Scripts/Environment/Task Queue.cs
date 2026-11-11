@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class TaskQueue<T> {
 
     public T DeQueue() {
         if(taskQueue.Count == 0) throw new Exception("Task queue is empty, what are you trying to remove?");
-
+                
         T firstInQueue = taskQueue[0];
         taskQueue.RemoveAt(0);
         return firstInQueue;
