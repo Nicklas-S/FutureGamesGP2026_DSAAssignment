@@ -43,7 +43,7 @@ public class BinaryTree {
             }
         }
 
-        if(inData.Entered < lastParrent.GetData().Entered) {
+        if(inData.Entered <= lastParrent.GetData().Entered) {
             lastParrent.leftChild = newNode;
         }
 
@@ -63,7 +63,9 @@ public class BinaryTree {
                 current = current.leftChild;
             }
             current = stack.Pop();
-            if(current.data.Entered >= first && current.data.Entered <= second) Debug.Log(current.data);
+            if(current.data.Entered.Date >= first && current.data.Entered.Date <= second) Debug.Log("Name: " + current.data.name + "\nID: " + current.data.employeeId +
+                "\nLast entered: " + current.data.Entered + "\nExited: " + current.data.Exiting);
+            current = current.rightChild;
         }
 
         DateTime stop = DateTime.Now;
@@ -78,7 +80,8 @@ public class BinaryTree {
 
         while(queue.Count > 0 ) {
             BSTNode node = queue.Dequeue();
-            if(node.data.Entered >= first && node.data.Entered <= second) Debug.Log(node.data);
+            if(node.data.Entered.Date >= first && node.data.Entered.Date <= second) Debug.Log("Name: " + node.data.name + "\nID: " + node.data.employeeId +
+                "\nLast entered: " + node.data.Entered + "\nExited: " + node.data.Exiting);
 
             if(node.leftChild != null) {
                 queue.Enqueue(node.leftChild);
