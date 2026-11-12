@@ -21,11 +21,12 @@ public class BinarySearchTreeTask : Task {
         Employees root = SortingTask.sortedEmployees[400];
         bst = new BinaryTree(root);
 
-        foreach(Employees employee in SortingTask.sortedEmployees) {
-            bst.Insert(employee);
+        for (int i = 0; i < SortingTask.sortedEmployees.Length; i++) {
+            if(i == 401 ) continue;
+            bst.Insert(SortingTask.sortedEmployees[i]);
         }
-        //bst.BFS(bst.root, firstDateTime, secondDateTime);
-        bst.DFS(bst.root, firstDateTime, secondDateTime);
+        bst.BFS(bst.root, firstDateTime, secondDateTime);
+        //bst.DFS(bst.root, firstDateTime, secondDateTime);
        
     }
 }

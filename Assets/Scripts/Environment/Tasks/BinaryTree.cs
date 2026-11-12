@@ -63,7 +63,7 @@ public class BinaryTree {
                 current = current.leftChild;
             }
             current = stack.Pop();
-            if(current.data.Entered >= first && current.data.Entered <= second) Debug.Log(current);
+            if(current.data.Entered >= first && current.data.Entered <= second) Debug.Log(current.data);
         }
 
         DateTime stop = DateTime.Now;
@@ -78,7 +78,7 @@ public class BinaryTree {
 
         while(queue.Count > 0 ) {
             BSTNode node = queue.Dequeue();
-            if(node.data.Entered >= first && node.data.Entered <= second) Debug.Log(node);
+            if(node.data.Entered >= first && node.data.Entered <= second) Debug.Log(node.data);
 
             if(node.leftChild != null) {
                 queue.Enqueue(node.leftChild);
